@@ -20,4 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/",include("users.urls")),
+    path('applications/', include('apps.applications.urls')), 
+    path('dashboard/', include('apps.applications.urls_dashboard')),
+    path('', RedirectView.as_view(url='/dashboard/')),
 ]
