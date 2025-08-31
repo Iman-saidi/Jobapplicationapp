@@ -67,7 +67,9 @@ python manage.py runserver
 http://127.0.0.1:8000/
 
 🔑 API Endpoints
-User Endpoints
+   
+   User Endpoints
+   
 POST /api/users/signup/ → Register a new user
 
 POST /api/users/login/ → Login user
@@ -75,6 +77,7 @@ POST /api/users/login/ → Login user
 POST /api/users/logout/ → Logout user
 
 Job Application Endpoints
+
 GET /api/applications/ → List all job applications
 
 POST /api/applications/ → Create a new job application
