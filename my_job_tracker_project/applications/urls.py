@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='applications_home'),
-    # Later you can add more, e.g.
-    # path('create/', views.create_application, name='create_application'),
+    path('', views.application_list, name='application_list'),
+    path('<int:pk>/', views.application_detail, name='application_detail'),
 ]
-

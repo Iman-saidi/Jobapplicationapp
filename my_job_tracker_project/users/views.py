@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import SignUpForm
 from django.http import HttpResponse
+from django.shortcuts import render
 
 # Signup view
 def signup_view(request):
@@ -30,3 +31,15 @@ def login_view(request):
 
 def home(request):
     return HttpResponse("Welcome to Job Tracker!")
+
+def user_list(request):
+    return HttpResponse("Users page - list of users")
+
+def user_detail(request, pk):
+    return HttpResponse(f"User detail page for ID {pk}")
+
+def user_list(request):
+    return render(request, 'users/list.html')
+
+def user_detail(request, pk):
+    return render(request, 'users/detail.html', {'id': pk})
