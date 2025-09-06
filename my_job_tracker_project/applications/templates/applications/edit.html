@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Job Application</title>
+</head>
+<body>
+    <h1>Edit {{ application.job_title }} at {{ application.company_name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{% url 'application_detail' pk=application.pk %}">Cancel</a>
+</body>
+</html>
+

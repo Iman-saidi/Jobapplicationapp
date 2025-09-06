@@ -4,8 +4,19 @@
     <title>Application Detail</title>
 </head>
 <body>
-    <h1>Application #{{ id }}</h1>
-    <p>Details about this application will go here.</p>
+    <h1>{{ application.job_title }} at {{ application.company_name }}</h1>
+    <p><strong>Status:</strong> {{ application.status }}</p>
+    <p><strong>Applied on:</strong> {{ application.application_date }}</p>
+    {% if application.link_to_posting %}
+        <p><strong>Link:</strong> <a href="{{ application.link_to_posting }}">{{ application.link_to_posting }}</a></p>
+    {% endif %}
+    {% if application.notes %}
+        <p><strong>Notes:</strong> {{ application.notes|linebreaksbr }}</p>
+    {% endif %}
+
+    <a href="{% url 'application_list' %}">Back to list</a> |
+    <a href="{% url 'application_edit' pk=application.pk %}">Edit</a> |
+    <a href="{% url 'application_delete' pk=application.pk %}">Delete</a>
 </body>
 </html>
 
