@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Job Application Dashboard</h1>
+    
+    <h3>Summary</h3>
+    <ul>
+        <li>Total Applications: {{ total_applications }}</li>
+        <li>Applied: {{ applied_count }}</li>
+        <li>Interviewing: {{ interviewing_count }}</li>
+        <li>Offer Received: {{ offer_received_count }}</li>
+        <li>Rejected: {{ rejected_count }}</li>
+        <li>Withdrawn: {{ withdrawn_count }}</li>
+    </ul>
+
+    <a href="{% url 'application_list' %}">View All Applications</a>
+</body>
+</html>

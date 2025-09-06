@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import JobApplication
 from .forms import JobApplicationForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return HttpResponse("Welcome to the Applications Home Page")
@@ -73,4 +74,30 @@ def application_delete(request, pk):
         return redirect('application_list')
 
     return render(request, 'applications/confirm_delete.html', {'application': application})
+
+@login_required
+def dashboard_view(request):
+    """
+    Renders the dashboard with a summary of job application data.
+    """
+    user_applications = JobApplication.objects.filter(user=request.user)
+
+    total_applications = user_applications.count()
+    applied_count = user_applications.filter(status='Applied').count()
+    interviewing_count = user_applications.filter(status='Interviewing').count()
+    offer_received_count = user_applications.filter(status='Offer Received').count()
+    rejected_count = user_applications.filter(status='Rejected').count()
+    withdrawn_count = user_applications.filter(status='Withdrawn').count()
+
+    context = {
+        'total_applications': total_applications,
+        'applied_count': applied_count,
+        'interviewing_count': interviewing_count,
+        'offer_received_count': offer_received_count,
+        'rejected_count': rejected_count,
+        'withdrawn_count': withdrawn_count,
+    }
+
+    return render(request, 'applications/dashboard.html', context)
+
 
