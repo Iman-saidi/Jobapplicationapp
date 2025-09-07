@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wo0rv3$)pr!(6hzluh2kx#iq5*ti9jaa4k1!p5hel5y4ym63)$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
@@ -128,6 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'application_list'
 
-LOGIN_REDIRECT_URL = "/users/profile/"
-
-LOGOUT_REDIRECT_URL = "/users/login/"
+LOGIN_REDIRECT_URL = 'profile'

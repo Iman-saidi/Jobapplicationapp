@@ -30,5 +30,5 @@ def signup_view(request):
     return render(request, 'users/signup.html', {'form': form})
 
 @login_required
-def profile(request):
+def profile_view(request):
     return render(request, "users/profile.html")
