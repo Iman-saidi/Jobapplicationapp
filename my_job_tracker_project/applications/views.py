@@ -13,6 +13,9 @@ def application_list(request):
     """
     Renders the page to display all job applications for the logged-in user.
     """
+    if request.headers.get("Accept") == "application/json" or request.headers.get("Content-Type") == "application/json":
+        return JsonResponse(list(applications.values()), safe=False)
+
     applications = JobApplication.objects.filter(user=request.user).order_by('-application_date')
     context = {
         'applications': applications
