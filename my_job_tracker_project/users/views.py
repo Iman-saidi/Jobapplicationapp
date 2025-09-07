@@ -2,6 +2,10 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from django.http import JsonResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
@@ -24,3 +28,7 @@ def signup_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'users/signup.html', {'form': form})
+
+@login_required
+def profile(request):
+    return render(request, "users/profile.html")
